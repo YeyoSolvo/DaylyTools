@@ -1,1 +1,73 @@
+--[[ TimeToolsCore 1.0
+            https://www.youtube.com/multiverseeditor
+            UID: 2769323
+            Last Version: https://github.com/YeyoCoreArt/YeyoScripts/blob/master/BraveFight/RandomLootBox
+            More scripts: https://github.com/YeyoCoreArt/YeyoScripts
 
+    〈 Description: 〉
+        get some basic tools for been able to create a simple way of claim daily, montly and weekly rewards.
+
+    〈 Instructions: 〉
+        1.- Copy and paste this script into your map, be sure auto-translation is off on your web browser
+        2.- (optional) Scroll down until the set up section, and your set ups
+        3.- Create a new script to add items, copy RandomChestRegiterItem(rarity,itemid,charges) for register new items (read api)
+
+    〈 API: 〉
+
+        RandomChestRegiterItem(rarity,itemid,charges)
+
+                use to Add items to the random list
+                    rarity: 1 = common, 2 = rare, 3 = epic, 4 = legendary 
+                    itemid: id of the item you want to add 
+                    charges: amount of charges of the item, use negative numbers to get random amout
+                Example
+                    add 5 dirt blocks (id 100) to the common rarity list (1), RandomChestRegiterItem(1,100,5) 
+                    add random (up to 7) dirt blocks to the rarity list common, RandomChestRegiterItem(1,100,-7) 
+
+
+    
+-]]
+
+--------------------------------------------
+--          ↓↓↓     SET UP        ↓↓↓
+--------------------------------------------
+
+DTTVaLastLogIn = ¨DTTVaLastLogIn¨ -- name of the saveable variable for last log in (string)
+DTTVaLastClaimDaily = ¨DTTVaLastClaimDaily¨ -- name of the saveable variable for daily claim reward (string)
+DTTVaLastClaimWeekly = ¨DTTVaLastClaimWeekly¨ -- name of the saveable variable for daily claim reward
+DTTVaLastClaimMonthly = ¨DTTVaLastClaimMonthly¨ -- name of the saveable variable for daily claim reward
+
+
+
+-------------------------------------------------------------
+--   ⚠⚠⚠ SET UP END, DO NOT MODIFY ANYTHING BELOW HERE ⚠⚠⚠
+-------------------------------------------------------------
+
+DTTdatabase = {} -- the table with handles all system info
+--Actual time vars
+DTTdatabase[¨time¨] = {} -- has all the hash for full plauer time
+DTTdatabase[¨seconds¨] = {} -- Handles CurSeconds for player
+DTTdatabase[¨minutes¨] = {} -- Handles CurMinutes for player
+DTTdatabase[¨hour¨] = {} -- Handles CurHour for player
+DTTdatabase[¨day¨] = {} -- Handles CurDay for player
+DTTdatabase[¨week¨] = {} -- Handles CurWeek for player
+DTTdatabase[¨month¨] = {} -- Handles CurMonth for player
+
+--CheckTime Player difference with real time on players
+DTTdatabase[¨DifSeconds¨] = {}
+DTTdatabase[¨DifMinutes¨] = {}
+DTTdatabase[¨DifHour¨] = {}
+DTTdatabase[¨DifDay¨] = {}
+DTTdatabase[¨DifWeek¨] = {}
+DTTdatabase[¨DifMonth¨] = {}
+
+--Simple get current diference between player time and requested time
+Function DTTGetDifSeconds(playerid)
+  local errorcode = ErrorCode.FAILED
+  local ontime = false
+  local timeDiference = 0
+
+  return errorcode,ontime, timeDiference
+end
+
+--Clai
